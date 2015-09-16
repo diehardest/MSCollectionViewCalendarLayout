@@ -1506,28 +1506,6 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
     }
 }
 
-- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity
-{
-    // Calculate which day column to stop on based on the velactiy
-    // If it's fast enough and the viewable content size is large enough, do a week, otherwise a day.
-    
-    CGFloat currentSection = [self currentHorizontalSectionToPoint:self.collectionView.contentOffset.x]; //[self closestSectionToDate:date];
-    CGFloat currentPage = (velocity.x > 0.0) ? floor(currentSection) : ceil(currentSection);
-    CGFloat nextPage = (velocity.x > 0.0) ? ceil(currentSection) : floor(currentSection);
-    
-    BOOL pannedLessThanAPage = fabs(1 + currentPage - currentSection) > 0.5;
-    BOOL flicked = fabs(velocity.x) > velocity.x > 0.3;
-
-    if (pannedLessThanAPage && flicked) {
-        proposedContentOffset.x = (nextPage * (self.sectionMargin.left + self.sectionWidth + self.sectionMargin.right)) + self.contentMargin.left;
-    }
-    else {
-        proposedContentOffset.x = (round(currentSection) * (self.sectionMargin.left + self.sectionWidth + self.sectionMargin.right)) + self.contentMargin.left;
-    }
-    
-    return proposedContentOffset;
-}
-
 #pragma mark Delegate Wrappers
 
 - (NSDateComponents *)dayForSection:(NSInteger)section
