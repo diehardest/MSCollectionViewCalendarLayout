@@ -73,6 +73,8 @@ typedef NS_ENUM(NSUInteger, MSHeaderLayoutType) {
 @property (nonatomic, assign) MSSectionLayoutType sectionLayoutType;
 @property (nonatomic, assign) MSHeaderLayoutType headerLayoutType;
 @property (nonatomic, assign) BOOL displayHeaderBackgroundAtOrigin;
+@property (nonatomic, assign) CGFloat earliestHour;
+@property (nonatomic, assign) CGFloat latestHour;
 
 - (CGFloat)currentHorizontalSectionToPoint:(CGFloat)xOffset;
 
