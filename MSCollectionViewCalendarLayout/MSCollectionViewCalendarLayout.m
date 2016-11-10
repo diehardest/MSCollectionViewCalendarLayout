@@ -304,7 +304,7 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
                 CGFloat itemMinX = sectionMinX;
                 CGFloat itemMaxX = nearbyintf(itemMinX + (self.sectionWidth - (self.cellMargin.left + self.cellMargin.right)));
                 CGFloat frameHeight = (itemMaxY - itemMinY);
-                itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), frameHeight > self.minimumItemHeight ? self.minimumItemHeight : frameHeight);
+                itemAttributes.frame = CGRectMake(itemMinX, itemMinY, (itemMaxX - itemMinX), frameHeight < self.minimumItemHeight ? self.minimumItemHeight : frameHeight);
                 itemAttributes.zIndex = [self zIndexForElementKind:nil];
             }
         }
