@@ -1117,9 +1117,12 @@ NSUInteger const MSCollectionMinBackgroundZ = 0.0;
         if (contentOffset.x < 0.0) {
             contentOffset.x = 0.0;
         }
-        [self.collectionView setContentOffset:contentOffset animated:animated];
+        CGRect scrollBounds = self.collectionView.bounds;
+        scrollBounds.origin = contentOffset;
+        self.collectionView.bounds = scrollBounds;
     }
 }
+
 - (CGFloat)currentHorizontalSectionToPoint:(CGFloat)xOffset
 {
     CGFloat sectionWidth = (self.sectionMargin.left + self.sectionWidth + self.sectionMargin.right);
